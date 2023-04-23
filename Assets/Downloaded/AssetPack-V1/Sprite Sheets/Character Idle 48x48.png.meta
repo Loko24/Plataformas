@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7048d3ac1aed5747bbf47ebbfd97770
+guid: 9aa790454533eeb4796b4d70f47cb540
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerWalk 48x48_0
+      name: Character Idle 48x48_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13c2b121faa1a274e9523fd6c6ccca22
-      internalID: -1852171192
+      spriteID: 270538bcfe0bfb744a5e45949cb85358
+      internalID: -1236711864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_1
+      name: Character Idle 48x48_1
       rect:
         serializedVersion: 2
         x: 48
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 896707265b355c5458ba4934a6178e7d
-      internalID: -1705729322
+      spriteID: b90902ae4eb31ae4f91d9b1c85fbc88c
+      internalID: 1888562872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_2
+      name: Character Idle 48x48_2
       rect:
         serializedVersion: 2
         x: 96
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21e65246f3ca4cd4582600c261abbfd0
-      internalID: 1305137106
+      spriteID: 0633a165930a31e44b10fc13d1838108
+      internalID: -254727712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_3
+      name: Character Idle 48x48_3
       rect:
         serializedVersion: 2
         x: 144
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 233de67581c2b77418a3759d545fc5b4
-      internalID: 218990890
+      spriteID: 742326c40f118cb4cbbe9dd6fd91e875
+      internalID: -1171754776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_4
+      name: Character Idle 48x48_4
       rect:
         serializedVersion: 2
         x: 192
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c341b279c1853a4ab1188f1ca5d8860
-      internalID: 173077200
+      spriteID: ecaa253a7b452d04dbc70bb87ddd8c1a
+      internalID: 1701202407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_5
+      name: Character Idle 48x48_5
       rect:
         serializedVersion: 2
         x: 240
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44ba5cca3d5d60c4e9ccbf8ec401cdd4
-      internalID: -1577416723
+      spriteID: 13122ba988babff428b5b608d3fe7fec
+      internalID: -659247894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_6
+      name: Character Idle 48x48_6
       rect:
         serializedVersion: 2
         x: 288
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d31284bc5521ddc4f8ce1b1fa65d93d5
-      internalID: 1634370909
+      spriteID: b087865e1f367b24d8bb4b506c57c271
+      internalID: 1048420393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_7
+      name: Character Idle 48x48_7
       rect:
         serializedVersion: 2
         x: 336
@@ -268,8 +268,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 655e1c8b8ed5a034589acdd7c4d65e51
-      internalID: -1817428813
+      spriteID: dfe62eea2cc1fc74897602cd85aab287
+      internalID: 660903875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character Idle 48x48_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed904250ae067024a86d7392f9120884
+      internalID: 1762735393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character Idle 48x48_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f07b943e570894186e4dc83dc9c25d
+      internalID: 1124400772
       vertices: []
       indices: 
       edges: []
@@ -285,14 +327,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlayerWalk 48x48_0: -1852171192
-      PlayerWalk 48x48_1: -1705729322
-      PlayerWalk 48x48_2: 1305137106
-      PlayerWalk 48x48_3: 218990890
-      PlayerWalk 48x48_4: 173077200
-      PlayerWalk 48x48_5: -1577416723
-      PlayerWalk 48x48_6: 1634370909
-      PlayerWalk 48x48_7: -1817428813
+      Character Idle 48x48_0: -1236711864
+      Character Idle 48x48_1: 1888562872
+      Character Idle 48x48_2: -254727712
+      Character Idle 48x48_3: -1171754776
+      Character Idle 48x48_4: 1701202407
+      Character Idle 48x48_5: -659247894
+      Character Idle 48x48_6: 1048420393
+      Character Idle 48x48_7: 660903875
+      Character Idle 48x48_8: 1762735393
+      Character Idle 48x48_9: 1124400772
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
