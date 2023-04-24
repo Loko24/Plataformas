@@ -10,14 +10,14 @@ public class Movement : MonoBehaviour
 
 
     [SerializeField]
-    private float velocidad = 3;
+    private float speed = 3;
     [SerializeField]
-    private float fuerzaSalto = 320;
+    private float jumpForce = 320;
     private float hr;   
     private float vr;
 
     
-    private bool suelo = false;
+    private bool ground = false;
 
 
     public LayerMask groundLayer;
@@ -41,13 +41,12 @@ public class Movement : MonoBehaviour
         if(hr < 0.0f) flip(-1);
         else if (hr > 0.0f) flip(1);
         
-        if(Input.GetButtonDown("Jump") && (suelo)){
-            rg2D.AddForce(new Vector2(0, fuerzaSalto));
+        if(Input.GetButtonDown("Jump") && (ground)){
+            rg2D.AddForce(new Vector2(0, jumpForce));
             animator.SetTrigger("jump");
         }
 
         animator.SetFloat("speedX", Math.Abs(rg2D.velocity.x));
-        //animator.SetBool("suelo", suelo);
         animator.SetBool("walk", hr != 0.0f);
         animator.SetFloat("speedY", rg2D.velocity.y);
     }
@@ -59,15 +58,14 @@ public class Movement : MonoBehaviour
     private void movePlayer () {
         //Moverse
         if(hr != 0 && rg2D.bodyType == RigidbodyType2D.Dynamic){
-            rg2D.velocity = new Vector2(hr * velocidad, rg2D.velocity.y);   
+            rg2D.velocity = new Vector2(hr * speed, rg2D.velocity.y);   
         }else{
             rg2D.velocity = new Vector2(0, rg2D.velocity.y);
         }
     }
 
     private void checkGround () {
-        //Verificar Suelo
-        suelo = Physics2D.CircleCast(transform.position, radius, Vector3.down, groundRayDist, groundLayer);
+        ground = Physics2D.CircleCast(transform.position, radius, Vector3.down, groundRayDist, groundLayer);
     }
 
     public void flip (int x) {
