@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7048d3ac1aed5747bbf47ebbfd97770
+guid: dca563274948c344cb76b13be6c482d8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerWalk 48x48_0
+      name: player land 48x48_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13c2b121faa1a274e9523fd6c6ccca22
-      internalID: -1852171192
+      spriteID: 8256317d102d7414983bb37fa0261b9a
+      internalID: 2061984582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_1
+      name: player land 48x48_1
       rect:
         serializedVersion: 2
         x: 48
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 896707265b355c5458ba4934a6178e7d
-      internalID: -1705729322
+      spriteID: 3a718c1cd46a24941b43dd6066895e24
+      internalID: 2026674417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_2
+      name: player land 48x48_2
       rect:
         serializedVersion: 2
         x: 96
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21e65246f3ca4cd4582600c261abbfd0
-      internalID: 1305137106
+      spriteID: 66a9fc8eed1ba794ab32d411579fd2d7
+      internalID: 826911095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_3
+      name: player land 48x48_3
       rect:
         serializedVersion: 2
         x: 144
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 233de67581c2b77418a3759d545fc5b4
-      internalID: 218990890
+      spriteID: 1c0d4819ae0000f46920ebf05252cdd4
+      internalID: -125209300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_4
+      name: player land 48x48_4
       rect:
         serializedVersion: 2
         x: 192
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c341b279c1853a4ab1188f1ca5d8860
-      internalID: 173077200
+      spriteID: f8f2c0544c028224596d9ea3c84aa9d3
+      internalID: -2030591878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_5
+      name: player land 48x48_5
       rect:
         serializedVersion: 2
         x: 240
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44ba5cca3d5d60c4e9ccbf8ec401cdd4
-      internalID: -1577416723
+      spriteID: e223828a0d2ccd9438956c7b412d87e4
+      internalID: 1786337405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_6
+      name: player land 48x48_6
       rect:
         serializedVersion: 2
         x: 288
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d31284bc5521ddc4f8ce1b1fa65d93d5
-      internalID: 1634370909
+      spriteID: 6e9302998215f5046a7ef16f1dd2202c
+      internalID: -342578023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk 48x48_7
+      name: player land 48x48_7
       rect:
         serializedVersion: 2
         x: 336
@@ -268,8 +268,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 655e1c8b8ed5a034589acdd7c4d65e51
-      internalID: -1817428813
+      spriteID: f923078ed910c6246bda9fa8d152a34a
+      internalID: 731309597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player land 48x48_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc2475e054e8dc44eaa4b63ed81ad89a
+      internalID: -1046586067
       vertices: []
       indices: 
       edges: []
@@ -285,14 +306,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlayerWalk 48x48_0: -1852171192
-      PlayerWalk 48x48_1: -1705729322
-      PlayerWalk 48x48_2: 1305137106
-      PlayerWalk 48x48_3: 218990890
-      PlayerWalk 48x48_4: 173077200
-      PlayerWalk 48x48_5: -1577416723
-      PlayerWalk 48x48_6: 1634370909
-      PlayerWalk 48x48_7: -1817428813
+      player land 48x48_0: 2061984582
+      player land 48x48_1: 2026674417
+      player land 48x48_2: 826911095
+      player land 48x48_3: -125209300
+      player land 48x48_4: -2030591878
+      player land 48x48_5: 1786337405
+      player land 48x48_6: -342578023
+      player land 48x48_7: 731309597
+      player land 48x48_8: -1046586067
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
