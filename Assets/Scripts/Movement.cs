@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
 
     
     private bool ground = false;
+    private bool doubleJump;
 
 
     public LayerMask groundLayer;
@@ -41,9 +42,24 @@ public class Movement : MonoBehaviour
         if(hr < 0.0f) flip(-1);
         else if (hr > 0.0f) flip(1);
         
-        if(Input.GetButtonDown("Jump") && (ground)){
-            rg2D.AddForce(new Vector2(0, jumpForce));
-            animator.SetTrigger("jump");
+        if(Input.GetButtonDown("Jump")){
+            if (ground)
+            {
+                rg2D.AddForce(new Vector2(0, jumpForce));
+                animator.SetTrigger("jump");
+            }
+            else if (doubleJump)
+            {
+                rg2D.velocity = Vector2.zero;
+                rg2D.AddForce(new Vector2(0, jumpForce));
+                animator.SetTrigger("jump");
+                doubleJump = false;
+            }
+        }
+
+        if (ground)
+        {
+            doubleJump = true;
         }
 
         animator.SetFloat("speedX", Math.Abs(rg2D.velocity.x));
