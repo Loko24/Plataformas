@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
         else if (hr > 0.0f) flip(1);
         
         if(Input.GetButtonDown("Jump")){
-            if (ground)
+            if (ground) //Esto es para saltar
             {
                 rg2D.AddForce(new Vector2(0, jumpForce));
                 animator.SetTrigger("jump");
