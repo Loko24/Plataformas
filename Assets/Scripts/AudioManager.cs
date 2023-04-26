@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -14,20 +14,16 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
         }
-        else
-        {
-
-        }
     }
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    public void ReproducirSonido(AudioClip audio)
+    public void PlaySound(AudioClip audio)
     {
-        audioSource.PlayOneShot(audio);
+        _audioSource.PlayOneShot(audio);
     }
 }
