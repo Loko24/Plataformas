@@ -64,3 +64,7 @@ crashlytics-build.properties
 
 /[Aa]ssets/StreamingAssets/build_info
 /[Aa]ssets/StreamingAssets/build_info.meta
+*.dwlt
+UserSettings/EditorUserSettings.asset
+UserSettings/Layouts/default-2022.dwlt
+UserSettings/Layouts/default-2022.dwlt
