@@ -20,14 +20,14 @@ public class Movement : MonoBehaviour
     private bool ground = false;
     private bool wall = false;
     private bool doubleJump;
+    private bool isSticking = false;
 
     private Vector2 direction;
 
     [SerializeField] 
     private LayerMask groundLayer;
     private float groundRayDistCheck = .17f;
-    private float wallRayDistCheck = .1f;
-
+    private float wallRayDistCheck = .11f;
 
     void Start()
     {
@@ -75,7 +75,12 @@ public class Movement : MonoBehaviour
     {
         movePlayer();
 
-        if(hr != 0.0f && vr != 0.0f)
+        if (wall && Math.Abs(hr) > 0.0f && !isSticking)
+        {
+            rg2D.constraints = RigidbodyConstraints2D.FreezePosition;
+            animator.Play("wall");
+            isSticking = true;
+        }
     }
 
     private void movePlayer()
@@ -108,6 +113,7 @@ public class Movement : MonoBehaviour
 
     public void flip(int x)
     {
-        gameObject.transform.localScale = new Vector3(x, 1, 1);
+        if(!isSticking)
+            gameObject.transform.localScale = new Vector3(x, 1, 1);
     }
 }
