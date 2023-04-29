@@ -1,3 +1,5 @@
+using System.IO.Pipes;
+using System.IO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,10 +45,10 @@ public class Movement : MonoBehaviour
         hr = Input.GetAxisRaw("Horizontal");
         vr = Input.GetAxisRaw("Vertical");
 
-        if (hr < 0.0f) flip(-1);
-        else if (hr > 0.0f) flip(1);
+        if (hr < 0.0f) flip(-1f);
+        else if (hr > 0.0f) flip(1f);
 
-        if (Input.GetButtonDown("Jump") && ground)
+        if (Input.GetButtonDown("Jump") && ground && !isSticking)
         {
             rg2D.AddForce(new Vector2(0, jumpForce));
             animator.SetTrigger("jump");
@@ -64,12 +66,22 @@ public class Movement : MonoBehaviour
             doubleJump = true;
         }
 
+        //Aqui estoy
+        if(Input.GetButtonDown("Jump") && isSticking){
+            rg2D.constraints &= RigidbodyConstraints2D.FreezeRotation;
+            isSticking = false;
+            flip(-direction.x);
+            animator.Play("JumpUp");
+            rg2D.AddForce(new Vector2(direction.x * jumpForce, jumpForce));
+        }
+
         animator.SetFloat("speedX", Math.Abs(rg2D.velocity.x));
         animator.SetBool("walk", hr != 0.0f);
         animator.SetFloat("speedY", rg2D.velocity.y);
         
         direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-    }
+
+    }   
 
     private void FixedUpdate()
     {
@@ -77,7 +89,7 @@ public class Movement : MonoBehaviour
 
         if (wall && Math.Abs(hr) > 0.0f && !isSticking)
         {
-            rg2D.constraints = RigidbodyConstraints2D.FreezePosition;
+            rg2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
             animator.Play("wall");
             isSticking = true;
         }
@@ -111,7 +123,7 @@ public class Movement : MonoBehaviour
         wall = hit.collider != null;
     }
 
-    public void flip(int x)
+    public void flip(float x)
     {
         if(!isSticking)
             gameObject.transform.localScale = new Vector3(x, 1, 1);
