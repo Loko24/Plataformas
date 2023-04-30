@@ -63,3 +63,4 @@ crashlytics-build.properties
 
 /[Aa]ssets/StreamingAssets/build_info
 /[Aa]ssets/StreamingAssets/build_info.meta
+*.dwlt

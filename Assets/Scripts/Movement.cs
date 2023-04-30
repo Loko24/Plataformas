@@ -12,12 +12,18 @@ public class Movement : MonoBehaviour
 
 
     [SerializeField]
-    private float speed = 1;
+    private float speed;
     [SerializeField]
-    private float jumpForce = 150;
+    private float jumpForce;
+    [SerializeField]
+    private float timeWallJump;
+    [SerializeField]
+    private float speedForceXWall;
+    [SerializeField]
+    private float speedForceYWall;
     private float hr;
     private float vr;
-
+    private float wallJump;
 
     private bool ground = false;
     private bool wall = false;
@@ -64,15 +70,14 @@ public class Movement : MonoBehaviour
         if (ground)
         {
             doubleJump = true;
+            wallJump = 0f;
         }
 
-        //Aqui estoy
         if(Input.GetButtonDown("Jump") && isSticking){
             rg2D.constraints &= RigidbodyConstraints2D.FreezeRotation;
-            isSticking = false;
-            flip(-direction.x);
             animator.Play("JumpUp");
-            rg2D.AddForce(new Vector2(direction.x * jumpForce, jumpForce));
+            rg2D.velocity = new Vector2(speedForceXWall * -direction.x, speedForceYWall);
+            StartCoroutine(jumpWall());
         }
 
         animator.SetFloat("speedX", Math.Abs(rg2D.velocity.x));
@@ -80,24 +85,25 @@ public class Movement : MonoBehaviour
         animator.SetFloat("speedY", rg2D.velocity.y);
         
         direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-
     }   
 
     private void FixedUpdate()
     {
-        movePlayer();
+        if(!isSticking){
+            movePlayer();
+        }
 
-        if (wall && Math.Abs(hr) > 0.0f && !isSticking)
+        if (wall && Math.Abs(hr) > 0.0f && !isSticking && wallJump != direction.x)
         {
+            wallJump = direction.x;
+            isSticking = true;
             rg2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
             animator.Play("wall");
-            isSticking = true;
         }
     }
 
     private void movePlayer()
     {
-        //Moverse
         if (hr != 0 && rg2D.bodyType == RigidbodyType2D.Dynamic)
         {
             rg2D.velocity = new Vector2(hr * speed, rg2D.velocity.y);
@@ -127,5 +133,12 @@ public class Movement : MonoBehaviour
     {
         if(!isSticking)
             gameObject.transform.localScale = new Vector3(x, 1, 1);
+    }
+
+    IEnumerator jumpWall(){
+        isSticking = true;
+        yield return new WaitForSeconds (timeWallJump);
+        flip(-direction.x);
+        isSticking = false;
     }
 }
