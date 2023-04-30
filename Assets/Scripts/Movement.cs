@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class Movement : MonoBehaviour
     private float vr;
     private float wallJump;
 
+    private int _live = 3;
+
     private bool ground = false;
     private bool wall = false;
     private bool doubleJump;
@@ -37,10 +41,18 @@ public class Movement : MonoBehaviour
     private float groundRayDistCheck = .17f;
     private float wallRayDistCheck = .11f;
 
-    void Start()
+    [SerializeField]
+    private TMP_Text _liveUI; 
+
+    void Awake()
     {
         rg2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        life();
     }
 
     void Update()
@@ -140,5 +152,34 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds (timeWallJump);
         flip(-direction.x);
         isSticking = false;
+    }
+
+    private void life () {
+        _liveUI.text = " " + _live + "X";
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Vector2 normal = other.contacts[0].normal;
+
+        if(other.gameObject.CompareTag("Enemy")){
+            _live--;
+            life();
+            animationController(1);
+            if(_live == 0){
+                animationController(2);
+            }
+        }
+    }
+
+    private void animationController (int x) {
+        Debug.Log(x);
+        if(x == 0) animator.Play("Idle");
+        if(x == 1) animator.Play("Hit");
+        if(x == 2) animator.Play("Death");
+    }
+
+    private void reloadScene () {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
