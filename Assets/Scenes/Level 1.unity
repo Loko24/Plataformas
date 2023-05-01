@@ -17576,12 +17576,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640683458664087151, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.60482544
       objectReference: {fileID: 0}
     - target: {fileID: 3640683458664087151, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1519599
       objectReference: {fileID: 0}
+    - target: {fileID: 6511013739634626656, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 1504906545}
     - target: {fileID: 6901015336268752810, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_SortingOrder
       value: 10
