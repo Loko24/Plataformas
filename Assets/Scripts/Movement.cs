@@ -4,8 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -14,111 +12,101 @@ public class Movement : MonoBehaviour
 
 
     [SerializeField]
-    private float speed;
+    private float _speed;
     [SerializeField]
-    private float jumpForce;
+    private float _jumpForce;
     [SerializeField]
-    private float timeWallJump;
+    private float _timeWallJump;
     [SerializeField]
-    private float speedForceXWall;
+    private float _speedForceXWall;
     [SerializeField]
-    private float speedForceYWall;
-    private float hr;
-    private float vr;
-    private float wallJump;
+    private float _speedForceYWall;
+    private float _hr;
+    private float _vr;
+    private float _wallJump;
 
-    private int _live = 3;
+    private bool _ground = false;
+    private bool _wall = false;
+    private bool _doubleJump;
+    private bool _isSticking = false;
 
-    private bool ground = false;
-    private bool wall = false;
-    private bool doubleJump;
-    private bool isSticking = false;
-
-    private Vector2 direction;
+    private Vector2 _direction;
 
     [SerializeField] 
-    private LayerMask groundLayer;
-    private float groundRayDistCheck = .17f;
-    private float wallRayDistCheck = .11f;
+    private LayerMask _groundLayer;
+    private float _groundRayDistCheck = .17f;
+    private float _wallRayDistCheck = .11f;
 
-    [SerializeField]
-    private TMP_Text _liveUI; 
-
-    void Awake()
+    void Start()
     {
         rg2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    void Start()
-    {
-        life();
-    }
-
     void Update()
     {
-        checkGround();
+        check_Ground();
         checkWallJump();
 
-        hr = Input.GetAxisRaw("Horizontal");
-        vr = Input.GetAxisRaw("Vertical");
+        _hr = Input.GetAxisRaw("Horizontal");
+        _vr = Input.GetAxisRaw("Vertical");
 
-        if (hr < 0.0f) flip(-1f);
-        else if (hr > 0.0f) flip(1f);
+        if (_hr < 0.0f) flip(-1f);
+        else if (_hr > 0.0f) flip(1f);
 
-        if (Input.GetButtonDown("Jump") && ground && !isSticking)
+        if (Input.GetButtonDown("Jump") && _ground && !_isSticking)
         {
-            rg2D.AddForce(new Vector2(0, jumpForce));
+            rg2D.AddForce(new Vector2(0, _jumpForce));
             animator.SetTrigger("jump");
         }
-        else if (Input.GetButtonDown("Jump") && doubleJump)
+        else if (Input.GetButtonDown("Jump") && _doubleJump)
         {
             rg2D.velocity = Vector2.zero;
-            rg2D.AddForce(new Vector2(0, jumpForce));
+            rg2D.AddForce(new Vector2(0, _jumpForce));
             animator.SetTrigger("jump");
-            doubleJump = false;
+            _doubleJump = false;
         }
 
-        if (ground)
+        if (_ground)
         {
-            doubleJump = true;
-            wallJump = 0f;
+            _doubleJump = true;
+            _wallJump = 0f;
         }
 
-        if(Input.GetButtonDown("Jump") && isSticking){
+        if(Input.GetButtonDown("Jump") && _isSticking){
             rg2D.constraints &= RigidbodyConstraints2D.FreezeRotation;
             animator.Play("JumpUp");
-            rg2D.velocity = new Vector2(speedForceXWall * -direction.x, speedForceYWall);
+            rg2D.velocity = new Vector2(_speedForceXWall * -_direction.x, _speedForceYWall);
             StartCoroutine(jumpWall());
         }
 
         animator.SetFloat("speedX", Math.Abs(rg2D.velocity.x));
-        animator.SetBool("walk", hr != 0.0f);
+        animator.SetBool("walk", _hr != 0.0f);
         animator.SetFloat("speedY", rg2D.velocity.y);
         
-        direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+        _direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
     }   
 
     private void FixedUpdate()
     {
-        if(!isSticking){
+        if(!_isSticking){
             movePlayer();
         }
 
-        if (wall && Math.Abs(hr) > 0.0f && !isSticking && wallJump != direction.x)
+        if (_wall && Math.Abs(_hr) > 0.0f && !_isSticking && _wallJump != _direction.x)
         {
-            wallJump = direction.x;
-            isSticking = true;
+            _wallJump = _direction.x;
+            _isSticking = true;
             rg2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
-            animator.Play("wall");
+            animator.Play("_wall");
         }
     }
 
     private void movePlayer()
     {
-        if (hr != 0 && rg2D.bodyType == RigidbodyType2D.Dynamic)
+        if (_hr != 0 && rg2D.bodyType == RigidbodyType2D.Dynamic)
         {
-            rg2D.velocity = new Vector2(hr * speed, rg2D.velocity.y);
+            rg2D.velocity = new Vector2(_hr * _speed, rg2D.velocity.y);
         }
         else
         {
@@ -126,60 +114,31 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void checkGround()
+    private void check_Ground()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRayDistCheck, groundLayer);
-        Debug.DrawRay(transform.position, Vector2.down * groundRayDistCheck, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _groundRayDistCheck, _groundLayer);
+        Debug.DrawRay(transform.position, Vector2.down * _groundRayDistCheck, Color.red);
 
-        ground = hit.collider != null;
+        _ground = hit.collider != null;
     }
 
     private void checkWallJump(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, wallRayDistCheck, groundLayer);        
-        Debug.DrawRay(transform.position, direction * wallRayDistCheck, Color.blue);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, _wallRayDistCheck, _groundLayer);        
+        Debug.DrawRay(transform.position, _direction * _wallRayDistCheck, Color.blue);
 
-        wall = hit.collider != null;
+        _wall = hit.collider != null;
     }
 
     public void flip(float x)
     {
-        if(!isSticking)
+        if(!_isSticking)
             gameObject.transform.localScale = new Vector3(x, 1, 1);
     }
 
     IEnumerator jumpWall(){
-        isSticking = true;
-        yield return new WaitForSeconds (timeWallJump);
-        flip(-direction.x);
-        isSticking = false;
-    }
-
-    private void life () {
-        _liveUI.text = " " + _live + "X";
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        Vector2 normal = other.contacts[0].normal;
-
-        if(other.gameObject.CompareTag("Enemy")){
-            _live--;
-            life();
-            animationController(1);
-            if(_live == 0){
-                animationController(2);
-            }
-        }
-    }
-
-    private void animationController (int x) {
-        Debug.Log(x);
-        if(x == 0) animator.Play("Idle");
-        if(x == 1) animator.Play("Hit");
-        if(x == 2) animator.Play("Death");
-    }
-
-    private void reloadScene () {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _isSticking = true;
+        yield return new WaitForSeconds (_timeWallJump);
+        flip(-_direction.x);
+        _isSticking = false;
     }
 }
