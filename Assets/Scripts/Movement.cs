@@ -98,7 +98,7 @@ public class Movement : MonoBehaviour
             _wallJump = _direction.x;
             _isSticking = true;
             rg2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
-            animator.Play("_wall");
+            animator.Play("wall");
         }
     }
 

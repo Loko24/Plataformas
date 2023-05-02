@@ -17596,11 +17596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750017838748818279, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.984
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 2750017838748818279, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.44
+      value: -4.28
       objectReference: {fileID: 0}
     - target: {fileID: 2750017838748818279, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17636,16 +17636,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640683458664087151, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5138588
+      value: -0.6248254
       objectReference: {fileID: 0}
     - target: {fileID: 3640683458664087151, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.27010012
+      value: 0.10196018
       objectReference: {fileID: 0}
     - target: {fileID: 6511013739634626656, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1504906545}
+    - target: {fileID: 8634177677548855676, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
+      propertyPath: _speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634177677548855676, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
+      propertyPath: _jumpForce
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634177677548855676, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
+      propertyPath: _timeWallJump
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634177677548855676, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
+      propertyPath: _speedForceXWall
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634177677548855676, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
+      propertyPath: _speedForceYWall
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634177677548855676, guid: 3d80e0f328bc44b4e820112d1866dba7, type: 3}
+      propertyPath: _groundLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
