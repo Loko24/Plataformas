@@ -173,7 +173,6 @@ public class Movement : MonoBehaviour
     }
 
     private void animationController (int x) {
-        Debug.Log(x);
         if(x == 0) animator.Play("Idle");
         if(x == 1) animator.Play("Hit");
         if(x == 2) animator.Play("Death");

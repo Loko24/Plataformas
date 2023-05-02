@@ -12,8 +12,8 @@ public class EnemyPatrolH : MonoBehaviour
     private float _patrolPointOne;
     [SerializeField]
     private float _patrolPointTwo;
-
-    [SerializeField]
+    private float _hr;
+    
     private int currentPointIndex = 0;
 
     private Rigidbody2D rb;
@@ -26,12 +26,15 @@ public class EnemyPatrolH : MonoBehaviour
     void Start()
     {
         _patrolPointOne = transform.position.x - _patrolPointOne;
-        _patrolPointTwo = transform.position.x - _patrolPointOne;
-
+        _patrolPointTwo = transform.position.x + _patrolPointTwo;
     }
 
     private void Update()
     {
+        _hr = rb.velocity.x;
+
+        if (_hr < 0.0f) flip(-1f);
+        else if (_hr > 0.0f) flip(1f);
     }
 
     void FixedUpdate()
@@ -54,5 +57,10 @@ public class EnemyPatrolH : MonoBehaviour
         {
             currentPointIndex = 0;
         }
+    }
+
+    public void flip(float x)
+    {
+            gameObject.transform.localScale = new Vector3(x, 1, 1);
     }
 }
