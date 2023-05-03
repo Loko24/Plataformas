@@ -14,7 +14,7 @@ public class EnemyPatrolH : MonoBehaviour
     private float _patrolPointTwo;
     private float _hr;
     
-    private int currentPointIndex = 0;
+    private int _currentPointIndex = 0;
 
     private Rigidbody2D rb;
 
@@ -40,22 +40,22 @@ public class EnemyPatrolH : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (transform.position.x > _patrolPointOne && currentPointIndex == 0)
+        if (transform.position.x > _patrolPointOne && _currentPointIndex == 0)
         {
             rb.velocity = new Vector2(-_moveSpeed, rb.velocity.y);
         }
 
-        if (transform.position.x < _patrolPointTwo && currentPointIndex == 1)
+        if (transform.position.x < _patrolPointTwo && _currentPointIndex == 1)
         {
             rb.velocity = new Vector2(_moveSpeed, rb.velocity.y);
         }
         if (transform.position.x < _patrolPointOne)
         {
-            currentPointIndex = 1;
+            _currentPointIndex = 1;
         }
         else if (transform.position.x > _patrolPointTwo)
         {
-            currentPointIndex = 0;
+            _currentPointIndex = 0;
         }
     }
 
