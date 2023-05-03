@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class EnemyPatrolH : MonoBehaviour
 {
-    private float _moveSpeed = 2f;
+    [SerializeField]
+    private float _moveSpeed;
     [SerializeField]
     private float _patrolPointOne;
     [SerializeField]

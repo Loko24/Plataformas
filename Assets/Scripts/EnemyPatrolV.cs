@@ -7,14 +7,14 @@ using UnityEngine;
 
 public class EnemyPatrolV : MonoBehaviour
 {
-    private float _moveSpeed = 2f;
+    [SerializeField]
+    private float _moveSpeed;
     [SerializeField]
     private float _patrolPointOne;
     [SerializeField]
     private float _patrolPointTwo;
     private float _hr;
     
-    [SerializeField]
     private int _currentPointIndex = 0;
 
     private Rigidbody2D rb;

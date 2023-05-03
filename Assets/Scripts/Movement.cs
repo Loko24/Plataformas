@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
             rg2D.AddForce(new Vector2(0, _jumpForce));
             animator.SetTrigger("jump");
         }
-        else if (Input.GetButtonDown("Jump") && _doubleJump)
+        else if (Input.GetButtonDown("Jump") && _doubleJump && !_isSticking)
         {
             rg2D.velocity = Vector2.zero;
             rg2D.AddForce(new Vector2(0, _jumpForce));
@@ -90,6 +90,13 @@ public class Movement : MonoBehaviour
             animator.Play("JumpUp");
             rg2D.velocity = new Vector2(_speedForceXWall * -_direction.x, _speedForceYWall);
             StartCoroutine(jumpWall());
+        }
+
+        if(Input.GetAxisRaw("Horizontal") == -_direction.x && _isSticking){
+            rg2D.constraints &= RigidbodyConstraints2D.FreezeRotation;
+            animator.Play("JumpDown");
+            flip(-_direction.x);
+            _isSticking = false;
         }
 
         animator.SetFloat("speedX", Math.Abs(rg2D.velocity.x));
@@ -162,7 +169,7 @@ public class Movement : MonoBehaviour
     {
         Vector2 normal = other.contacts[0].normal;
 
-        if(other.gameObject.CompareTag("Enemy")){
+        if(other.gameObject.CompareTag("Enemy") && normal != Vector2.up){
             _live--;
             life();
             animationController(1);
