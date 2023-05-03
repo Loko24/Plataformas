@@ -18,6 +18,7 @@ public class EnemyPatrolV : MonoBehaviour
     private int _currentPointIndex = 0;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     void Awake()
     {
@@ -51,5 +52,19 @@ public class EnemyPatrolV : MonoBehaviour
         {
             _currentPointIndex = 0;
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Vector2 normal = collision.contacts[0].normal;
+
+        if (normal == Vector2.down && collision.gameObject.CompareTag("Player"))
+        {
+            death();
+        }
+    }
+
+    void death(){
+        Destroy(gameObject);
     }
 }

@@ -17,10 +17,12 @@ public class EnemyPatrolH : MonoBehaviour
     private int _currentPointIndex = 0;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -62,5 +64,19 @@ public class EnemyPatrolH : MonoBehaviour
     public void flip(float x)
     {
             gameObject.transform.localScale = new Vector3(x, 1, 1);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Vector2 normal = collision.contacts[0].normal;
+
+        if (normal == Vector2.down && collision.gameObject.CompareTag("Player"))
+        {
+            death();
+        }
+    }
+
+    void death(){
+        Destroy(gameObject);
     }
 }
