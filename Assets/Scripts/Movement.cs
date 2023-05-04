@@ -1,3 +1,4 @@
+
 using System.IO.Pipes;
 using System.IO;
 using System;
@@ -135,15 +136,15 @@ public class Movement : MonoBehaviour
 
     private void check_Ground()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _groundRayDistCheck, _groundLayer);
-        Debug.DrawRay(transform.position, Vector2.down * _groundRayDistCheck, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-.08f, 0f, 0f), Vector2.down, _groundRayDistCheck, _groundLayer);
+        Debug.DrawRay(transform.position + new Vector3(-.08f, 0f, 0f), Vector2.down * _groundRayDistCheck, Color.red);
 
         _ground = hit.collider != null;
     }
 
     private void checkWallJump(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, _wallRayDistCheck, _groundLayer);        
-        Debug.DrawRay(transform.position, _direction * _wallRayDistCheck, Color.blue);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0f, 0.08f, 0f), _direction, _wallRayDistCheck, _groundLayer);        
+        Debug.DrawRay(transform.position + new Vector3(0f, 0.08f, 0f), _direction * _wallRayDistCheck, Color.blue);
 
         _wall = hit.collider != null;
     }

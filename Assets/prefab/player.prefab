@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _jumpForce: 150
+  _jumpForce: 200
   _timeWallJump: 0.2
   _speedForceXWall: 2
   _speedForceYWall: 4
@@ -714,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7705661190297574024, guid: 636e517ed25b2714181ae920124bcdea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5138588
+      value: 1.6568584
       objectReference: {fileID: 0}
     - target: {fileID: 7705661190297574024, guid: 636e517ed25b2714181ae920124bcdea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.27010012
+      value: 0.24310017
       objectReference: {fileID: 0}
     - target: {fileID: 7705661190297574024, guid: 636e517ed25b2714181ae920124bcdea, type: 3}
       propertyPath: m_LocalPosition.z
