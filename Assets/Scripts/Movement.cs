@@ -136,8 +136,8 @@ public class Movement : MonoBehaviour
 
     private void check_Ground()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-.08f, 0f, 0f), Vector2.down, _groundRayDistCheck, _groundLayer);
-        Debug.DrawRay(transform.position + new Vector3(-.08f, 0f, 0f), Vector2.down * _groundRayDistCheck, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-.08f * _direction.x, 0f, 0f), Vector2.down, _groundRayDistCheck, _groundLayer);
+        Debug.DrawRay(transform.position + new Vector3(-.08f * _direction.x, 0f, 0f), Vector2.down * _groundRayDistCheck, Color.red);
 
         _ground = hit.collider != null;
     }
