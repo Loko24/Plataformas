@@ -1,4 +1,3 @@
-
 using System.IO.Pipes;
 using System.IO;
 using System;
@@ -29,6 +28,7 @@ public class Movement : MonoBehaviour
     private float _wallJump;
 
     private int _live = 3;
+    private int _fruit;
 
     private bool _ground = false;
     private bool _wall = false;
@@ -37,6 +37,8 @@ public class Movement : MonoBehaviour
 
     private Vector2 _direction;
 
+    private Vector3 _position;
+
     [SerializeField] 
     private LayerMask _groundLayer;
     private float _groundRayDistCheck = .17f;
@@ -44,6 +46,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _liveUI; 
+    [SerializeField]
+    private TMP_Text _fruitUI; 
 
         
     void Awake() {
@@ -53,6 +57,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        _position = transform.position;
         life();
     }
 
@@ -166,6 +171,25 @@ public class Movement : MonoBehaviour
         _liveUI.text = " " + _live + "X";
     }
 
+    private void fruit () {
+        _fruit++;
+        _fruitUI.text = "X" + _fruit;
+    }
+
+    private void animationController (int x) {
+        if(x == 0) animator.Play("Idle");
+        if(x == 1) animator.Play("Hit");
+        if(x == 2) animator.Play("Death");
+    }
+
+    private void reloadScene () {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void reponer () {
+        transform.position = _position;
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         Vector2 normal = other.contacts[0].normal;
@@ -180,13 +204,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void animationController (int x) {
-        if(x == 0) animator.Play("Idle");
-        if(x == 1) animator.Play("Hit");
-        if(x == 2) animator.Play("Death");
-    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Fruit")){
+            fruit();
+            Destroy(other.gameObject);
+        }
 
-    private void reloadScene () {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(other.gameObject.CompareTag("Void")){
+            reponer();
+        }
     }
 }
