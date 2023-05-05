@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
     private float _wallJump;
 
     private int _live = 3;
+    private int _fruit;
 
     private bool _ground = false;
     private bool _wall = false;
@@ -36,6 +37,8 @@ public class Movement : MonoBehaviour
 
     private Vector2 _direction;
 
+    private Vector3 _position;
+
     [SerializeField] 
     private LayerMask _groundLayer;
     private float _groundRayDistCheck = .17f;
@@ -43,6 +46,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _liveUI; 
+    [SerializeField]
+    private TMP_Text _fruitUI; 
 
         
     void Awake() {
@@ -52,6 +57,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        _position = transform.position;
         life();
     }
 
@@ -135,15 +141,15 @@ public class Movement : MonoBehaviour
 
     private void check_Ground()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _groundRayDistCheck, _groundLayer);
-        Debug.DrawRay(transform.position, Vector2.down * _groundRayDistCheck, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-.08f * _direction.x, 0f, 0f), Vector2.down, _groundRayDistCheck, _groundLayer);
+        Debug.DrawRay(transform.position + new Vector3(-.08f * _direction.x, 0f, 0f), Vector2.down * _groundRayDistCheck, Color.red);
 
         _ground = hit.collider != null;
     }
 
     private void checkWallJump(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, _wallRayDistCheck, _groundLayer);        
-        Debug.DrawRay(transform.position, _direction * _wallRayDistCheck, Color.blue);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0f, 0.08f, 0f), _direction, _wallRayDistCheck, _groundLayer);        
+        Debug.DrawRay(transform.position + new Vector3(0f, 0.08f, 0f), _direction * _wallRayDistCheck, Color.blue);
 
         _wall = hit.collider != null;
     }
@@ -165,6 +171,25 @@ public class Movement : MonoBehaviour
         _liveUI.text = " " + _live + "X";
     }
 
+    private void fruit () {
+        _fruit++;
+        _fruitUI.text = "X" + _fruit;
+    }
+
+    private void animationController (int x) {
+        if(x == 0) animator.Play("Idle");
+        if(x == 1) animator.Play("Hit");
+        if(x == 2) animator.Play("Death");
+    }
+
+    private void reloadScene () {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void reponer () {
+        transform.position = _position;
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         Vector2 normal = other.contacts[0].normal;
@@ -179,13 +204,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void animationController (int x) {
-        if(x == 0) animator.Play("Idle");
-        if(x == 1) animator.Play("Hit");
-        if(x == 2) animator.Play("Death");
-    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Fruit")){
+            fruit();
+            Destroy(other.gameObject);
+        }
 
-    private void reloadScene () {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(other.gameObject.CompareTag("Void")){
+            reponer();
+        }
     }
 }
