@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
 {
     private Rigidbody2D rg2D;
     private Animator animator;
+    private BoxCollider2D bx2D;
 
     [Header("Player stats")]
     [SerializeField]
@@ -58,11 +59,18 @@ public class Movement : MonoBehaviour
 
     private Timer _timer;
 
+
+    [SerializeField]
+    private GameObject _panel;
+    private bool _blockMove = false;
+
     void Awake()
     {
+
         _timer = FindAnyObjectByType<Timer>();
         rg2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();      
+        animator = GetComponent<Animator>();
+        bx2D = GetComponent<BoxCollider2D>();      
         _fruits = GameObject.FindGameObjectsWithTag("Fruit");
     }
 
@@ -127,7 +135,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isSticking)
+        if (!_isSticking && !_blockMove)
         {
             MovePlayer();
         }
@@ -171,7 +179,7 @@ public class Movement : MonoBehaviour
 
     public void Flip(float x)
     {
-        if (!_isSticking)
+        if (!_isSticking && !_blockMove)
             gameObject.transform.localScale = new Vector3(x, 1, 1);
     }
 
@@ -200,9 +208,9 @@ public class Movement : MonoBehaviour
         if (x == 2) animator.Play("Death");
     }
 
-    private void ReloadScene()
+    private void CreditsScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("credits");
     }
 
     IEnumerator ChangeScene(){
@@ -231,7 +239,11 @@ public class Movement : MonoBehaviour
             AnimationController(1);
             if (_live == 0)
             {
+                _blockMove = true;
+                _panel.SetActive(true);
                 _timer.EndTimer();
+                bx2D.enabled = false;
+                rg2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                 AnimationController(2);
 
             }
