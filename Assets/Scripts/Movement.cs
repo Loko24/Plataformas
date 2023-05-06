@@ -27,7 +27,6 @@ public class Movement : MonoBehaviour
     [Header("Delay")]
     [SerializeField]
     private float _timeWallJump;
-    private int _live = 3;
 
     [Header("UI Fileds")]
     [SerializeField]
@@ -42,9 +41,11 @@ public class Movement : MonoBehaviour
     private float _groundRayDistCheck = .17f;
     [SerializeField]
     private float _wallRayDistCheck = .11f;
+
     private GameObject[] _fruits;
     private int _fruit;
     private int _fruitMax;
+
     private float _hr;
     private float _wallJump;
     private bool _ground = false;
@@ -55,8 +56,11 @@ public class Movement : MonoBehaviour
     private Vector2 _direction;
     private Vector3 _position;
 
+    private Timer _timer;
+
     void Awake()
     {
+        _timer = FindAnyObjectByType<Timer>();
         rg2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();      
         _fruits = GameObject.FindGameObjectsWithTag("Fruit");
@@ -227,7 +231,9 @@ public class Movement : MonoBehaviour
             AnimationController(1);
             if (_live == 0)
             {
+                _timer.EndTimer();
                 AnimationController(2);
+
             }
         }
     }
