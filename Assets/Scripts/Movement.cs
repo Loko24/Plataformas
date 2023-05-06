@@ -210,6 +210,7 @@ public class Movement : MonoBehaviour
 
     private void CreditsScene()
     {
+        _timer.destroyObject();
         SceneManager.LoadScene("credits");
     }
 
@@ -219,7 +220,9 @@ public class Movement : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex < 4)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else{
-            SceneManager.LoadScene(0);
+            
+            _timer.destroyObject();
+            SceneManager.LoadScene("credits");
         }
     }
 
