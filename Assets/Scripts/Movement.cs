@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
 
     private int _live = 3;
     private int _fruit;
+    private int _fruitMax;
 
     private bool _ground = false;
     private bool _wall = false;
@@ -49,15 +50,19 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private TMP_Text _fruitUI; 
 
+    private GameObject[] _fruits;
+
         
     void Awake() {
         rg2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();      
+        _fruits = GameObject.FindGameObjectsWithTag("Fruit");
     }
 
     void Start()
     {
         _position = transform.position;
+        _fruitMax = _fruits.Length;
         life();
     }
 
@@ -161,7 +166,6 @@ public class Movement : MonoBehaviour
     }
 
     IEnumerator jumpWall(){
-        _isSticking = true;
         yield return new WaitForSeconds (_timeWallJump);
         flip(-_direction.x);
         _isSticking = false;
@@ -186,6 +190,17 @@ public class Movement : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    IEnumerator changeScene(){
+        _isSticking = true;
+        yield return new WaitForSeconds (2);
+        if(SceneManager.GetActiveScene().buildIndex < 4)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else{
+            SceneManager.LoadScene(0);
+        }
+    }
+
+
     private void reponer () {
         transform.position = _position;
     }
@@ -209,6 +224,10 @@ public class Movement : MonoBehaviour
         if(other.gameObject.CompareTag("Fruit")){
             fruit();
             Destroy(other.gameObject);
+
+            if(_fruit == _fruitMax){
+            StartCoroutine(changeScene());
+            }
         }
 
         if(other.gameObject.CompareTag("Void")){
