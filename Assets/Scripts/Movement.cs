@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
     [Header("Delay")]
     [SerializeField]
     private float _timeWallJump;
+    private int _live = 3;
 
     [Header("UI Fileds")]
     [SerializeField]
@@ -41,8 +42,9 @@ public class Movement : MonoBehaviour
     private float _groundRayDistCheck = .17f;
     [SerializeField]
     private float _wallRayDistCheck = .11f;
-
+    private GameObject[] _fruits;
     private int _fruit;
+    private int _fruitMax;
     private float _hr;
     private float _wallJump;
     private bool _ground = false;
@@ -56,12 +58,14 @@ public class Movement : MonoBehaviour
     void Awake()
     {
         rg2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();      
+        _fruits = GameObject.FindGameObjectsWithTag("Fruit");
     }
 
     void Start()
     {
         _position = transform.position;
+        _fruitMax = _fruits.Length;
         Life();
     }
 
@@ -169,7 +173,6 @@ public class Movement : MonoBehaviour
 
     IEnumerator JumpWall()
     {
-        _isSticking = true;
         yield return new WaitForSeconds(_timeWallJump);
         Flip(-_direction.x);
         _isSticking = false;
@@ -198,8 +201,18 @@ public class Movement : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void RestartPosition()
-    {
+    IEnumerator ChangeScene(){
+        _isSticking = true;
+        yield return new WaitForSeconds (2);
+        if(SceneManager.GetActiveScene().buildIndex < 4)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else{
+            SceneManager.LoadScene(0);
+        }
+    }
+
+
+    private void RestartPosition() {
         transform.position = _position;
     }
 
@@ -225,6 +238,10 @@ public class Movement : MonoBehaviour
         {
             Fruit();
             Destroy(other.gameObject);
+
+            if(_fruit == _fruitMax){
+            StartCoroutine(ChangeScene());
+            }
         }
 
         if (other.gameObject.CompareTag("Void"))
