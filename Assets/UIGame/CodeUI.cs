@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEditor.Progress;
@@ -11,12 +9,15 @@ public class CodeUI : MonoBehaviour
     UIDocument _miMenu;
     //Custom Audio
     public AudioSource audioSourceGm;
+    //
+    public string sceneName;
     //main_menu
     Button _play_btn;
     Button _audio_opt_btn;
     Button _credits_btn;
     Button _exit_btn;
     //second_opt_menu
+    Label _optitle;
     VisualElement _right;
     VisualElement _options;
     VisualElement _sound_opt;
@@ -26,17 +27,9 @@ public class CodeUI : MonoBehaviour
     DropdownField _songs_list;
     Slider _audio_volume;
 
-    /*private void Start()
-    {
-        audioSourceGm = GetComponent<AudioSource>();
-        _onoff_sound.value = audioSourceGm.enabled;
-        _audio_volume.value = audioSourceGm.volume;
-        _credits.SetEnabled(false);
-        _sound_opt.SetEnabled(false);
-    }*/
-
     private void OnEnable()
     {
+        sceneName = "Level 1";
         _miMenu = GetComponent<UIDocument>();
         VisualElement root = _miMenu.rootVisualElement;
         //main_opt
@@ -49,7 +42,8 @@ public class CodeUI : MonoBehaviour
         _options = root.Q<VisualElement>("options");
         _sound_opt = root.Q<VisualElement>("sound_opt");
         _credits = root.Q<VisualElement>("credits");
-        
+
+        _optitle = root.Q<Label>("optitle");
         _bkmenu = root.Q<Button>("bkmenu");
         _onoff_sound = root.Q<Toggle>("onoff_sound");
         _songs_list = root.Q<DropdownField>("songs-list");
@@ -82,28 +76,23 @@ public class CodeUI : MonoBehaviour
         switch (opt)
         {
             case 1:
+                SceneManager.LoadScene(sceneName);
                 break;
             case 2:
                 Debug.Log("OPTION menu sound_opt" + opt);
+                _optitle.text = "OPCIONES AUDIO";
                 _credits.SetEnabled(false);
                 _credits.RemoveFromHierarchy();
                 _sound_opt.SetEnabled(true);
                 _options.Add(_sound_opt);
-                /*_credits.RemoveFromClassList(".menu_opt_active");
-                _sound_opt.RemoveFromClassList(".menu_opt_deactive");
-                _credits.AddToClassList(".menu_opt_deactive");
-                _sound_opt.AddToClassList(".menu_opt_active");*/
                 break; 
             case 3:
+                _optitle.text = "CREDITOS";
                 _credits.SetEnabled(true);
                 _sound_opt.SetEnabled(false);
                 _sound_opt.RemoveFromHierarchy();
                 _options.Add(_credits);
                 Debug.Log("OPTION menu credits" + opt);
-                /*_sound_opt.RemoveFromClassList(".menu_opt_active");
-                _credits.RemoveFromClassList(".menu_opt_deactive");
-                _sound_opt.AddToClassList(".menu_opt_deactive");
-                _credits.AddToClassList(".menu_opt_active");*/
                 break; 
             case 4:
                 break;
