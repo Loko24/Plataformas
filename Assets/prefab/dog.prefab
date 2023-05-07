@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b736aa51416b4488e9cea82703e2f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DogDeath: {fileID: 8300000, guid: 328c354fe644070488ebad09b5e6ece6, type: 3}
   _moveSpeed: 1
   _patrolPointOne: 1
   _patrolPointTwo: 1
