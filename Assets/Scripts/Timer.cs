@@ -70,4 +70,8 @@ public class Timer : MonoBehaviour
             yield return null;
         }
     }
+
+    public void destroyObject () {
+        Destroy(this.gameObject);
+    }
 }

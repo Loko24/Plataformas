@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1046e1cd0750ad5631ce936d6cd6a24c433339bd00c6f89bf1bcc806ddc55768
-size 1355
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!162 &1
+EditorUserSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 4
+  m_ConfigSettings:
+    RecentlyUsedSceneGuid-0:
+      value: 0553015652065b0d0e08082448270d44454f1a2f2e79773474281b67e3e2316a
+      flags: 0
+    RecentlyUsedSceneGuid-1:
+      value: 535005535c565c5f580d5d73147b5a44174e4c787d2b27337d2a4e6be3e1603a
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 05075704005151580b5a5d211272064415151b2c7f7e7e317e711865b4b5353e
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 50550403070c5e5d0c5e0a7b41270e44424e197a2e7e7e347f701e65e3e2363e
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 5354065152070c5a5f0f082011215944424e19787f7827617f701f61b5b36368
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 0055045f510d08580e0b5e7741225a444f4f1b78752d24647a2a4465bae5313b
+      flags: 0
+    vcSharedLogLevel:
+      value: 0d5e400f0650
+      flags: 0
+  m_VCAutomaticAdd: 1
+  m_VCDebugCom: 0
+  m_VCDebugCmd: 0
+  m_VCDebugOut: 0
+  m_SemanticMergeMode: 2
+  m_DesiredImportWorkerCount: 5
+  m_StandbyImportWorkerCount: 2
+  m_IdleImportWorkerShutdownDelay: 60000
+  m_VCShowFailedCheckout: 1
+  m_VCOverwriteFailedCheckoutAssets: 1
+  m_VCProjectOverlayIcons: 1
+  m_VCHierarchyOverlayIcons: 1
+  m_VCOtherOverlayIcons: 1
+  m_VCAllowAsyncUpdate: 1
+  m_ArtifactGarbageCollection: 1

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class EnemyPatrolV : MonoBehaviour
 {
+    public AudioClip EagleDeath;
     [SerializeField]
     private float _moveSpeed;
     [SerializeField]
@@ -60,6 +61,7 @@ public class EnemyPatrolV : MonoBehaviour
 
         if (normal == Vector2.down && collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySound(EagleDeath);
             death();
         }
     }

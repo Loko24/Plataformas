@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c7f8d36ebbe544083962b28222996e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EagleDeath: {fileID: 8300000, guid: 5439896008a31d843ac858208550219e, type: 3}
   _moveSpeed: 1
   _patrolPointOne: 1
   _patrolPointTwo: 1

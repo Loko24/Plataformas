@@ -9,8 +9,15 @@ using TMPro;
 
 public class Movement : MonoBehaviour
 {
+    public AudioClip JumpSound1;
+    public AudioClip JumpSound2;
+    public AudioClip JumpSound3;
+    public AudioClip GetDamage;
+    public AudioClip DeathPlayer;
+
     private Rigidbody2D rg2D;
     private Animator animator;
+    private BoxCollider2D bx2D;
 
     [Header("Player stats")]
     [SerializeField]
@@ -58,11 +65,18 @@ public class Movement : MonoBehaviour
 
     private Timer _timer;
 
+
+    [SerializeField]
+    private GameObject _panel;
+    private bool _blockMove = false;
+
     void Awake()
     {
+
         _timer = FindAnyObjectByType<Timer>();
         rg2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();      
+        animator = GetComponent<Animator>();
+        bx2D = GetComponent<BoxCollider2D>();      
         _fruits = GameObject.FindGameObjectsWithTag("Fruit");
     }
 
@@ -87,12 +101,14 @@ public class Movement : MonoBehaviour
         {
             rg2D.AddForce(new Vector2(0, _jumpForce));
             animator.SetTrigger("jump");
+            AudioManager.Instance.PlaySound(JumpSound1);
         }
         else if (Input.GetButtonDown("Jump") && _doubleJump && !_isSticking)
         {
             rg2D.velocity = Vector2.zero;
             rg2D.AddForce(new Vector2(0, _jumpForce));
             animator.SetTrigger("jump");
+            AudioManager.Instance.PlaySound(JumpSound2);
             _doubleJump = false;
         }
 
@@ -107,6 +123,7 @@ public class Movement : MonoBehaviour
             rg2D.constraints &= RigidbodyConstraints2D.FreezeRotation;
             animator.Play("JumpUp");
             rg2D.velocity = new Vector2(_speedForceXWall * -_direction.x, _speedForceYWall);
+            AudioManager.Instance.PlaySound(JumpSound3);
             StartCoroutine(JumpWall());
         }
 
@@ -127,7 +144,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isSticking)
+        if (!_isSticking && !_blockMove)
         {
             MovePlayer();
         }
@@ -171,7 +188,7 @@ public class Movement : MonoBehaviour
 
     public void Flip(float x)
     {
-        if (!_isSticking)
+        if (!_isSticking && !_blockMove)
             gameObject.transform.localScale = new Vector3(x, 1, 1);
     }
 
@@ -200,9 +217,10 @@ public class Movement : MonoBehaviour
         if (x == 2) animator.Play("Death");
     }
 
-    private void ReloadScene()
+    private void CreditsScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _timer.destroyObject();
+        SceneManager.LoadScene("credits");
     }
 
     IEnumerator ChangeScene(){
@@ -211,7 +229,9 @@ public class Movement : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex < 4)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else{
-            SceneManager.LoadScene(0);
+            
+            _timer.destroyObject();
+            SceneManager.LoadScene("credits");
         }
     }
 
@@ -229,11 +249,16 @@ public class Movement : MonoBehaviour
             _live--;
             Life();
             AnimationController(1);
+            AudioManager.Instance.PlaySound(GetDamage);
             if (_live == 0)
             {
+                _blockMove = true;
+                _panel.SetActive(true);
                 _timer.EndTimer();
+                bx2D.enabled = false;
+                rg2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                 AnimationController(2);
-
+                AudioManager.Instance.PlaySound(DeathPlayer);
             }
         }
     }
