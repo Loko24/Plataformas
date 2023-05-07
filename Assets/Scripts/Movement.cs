@@ -9,6 +9,12 @@ using TMPro;
 
 public class Movement : MonoBehaviour
 {
+    public AudioClip JumpSound1;
+    public AudioClip JumpSound2;
+    public AudioClip JumpSound3;
+    public AudioClip GetDamage;
+    public AudioClip DeathPlayer;
+
     private Rigidbody2D rg2D;
     private Animator animator;
     private BoxCollider2D bx2D;
@@ -95,12 +101,14 @@ public class Movement : MonoBehaviour
         {
             rg2D.AddForce(new Vector2(0, _jumpForce));
             animator.SetTrigger("jump");
+            AudioManager.Instance.PlaySound(JumpSound1);
         }
         else if (Input.GetButtonDown("Jump") && _doubleJump && !_isSticking)
         {
             rg2D.velocity = Vector2.zero;
             rg2D.AddForce(new Vector2(0, _jumpForce));
             animator.SetTrigger("jump");
+            AudioManager.Instance.PlaySound(JumpSound2);
             _doubleJump = false;
         }
 
@@ -115,6 +123,7 @@ public class Movement : MonoBehaviour
             rg2D.constraints &= RigidbodyConstraints2D.FreezeRotation;
             animator.Play("JumpUp");
             rg2D.velocity = new Vector2(_speedForceXWall * -_direction.x, _speedForceYWall);
+            AudioManager.Instance.PlaySound(JumpSound3);
             StartCoroutine(JumpWall());
         }
 
@@ -240,6 +249,7 @@ public class Movement : MonoBehaviour
             _live--;
             Life();
             AnimationController(1);
+            AudioManager.Instance.PlaySound(GetDamage);
             if (_live == 0)
             {
                 _blockMove = true;
@@ -248,7 +258,7 @@ public class Movement : MonoBehaviour
                 bx2D.enabled = false;
                 rg2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                 AnimationController(2);
-
+                AudioManager.Instance.PlaySound(DeathPlayer);
             }
         }
     }

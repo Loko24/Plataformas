@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5237989052556870183}
   - component: {fileID: 1428622562017039102}
   - component: {fileID: 859945624760457560}
+  - component: {fileID: 1053606084849757003}
   m_Layer: 0
   m_Name: cherry
   m_TagString: Fruit
@@ -152,3 +153,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21, y: 0.21}
   m_EdgeRadius: 0
+--- !u!114 &1053606084849757003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188155366843636906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03913d340bbf110468e735e34b05f0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundCherry: {fileID: 8300000, guid: 61c78a7fc9c8665449b8f6c3acd6050f, type: 3}

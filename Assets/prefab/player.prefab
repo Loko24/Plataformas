@@ -102,6 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2885fa3997ebf4fbaa36248853ebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JumpSound1: {fileID: 8300000, guid: 43b41aacec281ae47b6a074be5f57394, type: 3}
+  JumpSound2: {fileID: 8300000, guid: f2344eb86e323ad4e875fdf587e63371, type: 3}
+  JumpSound3: {fileID: 8300000, guid: edb34a880b720c047b421ca4cd642dbe, type: 3}
+  GetDamage: {fileID: 8300000, guid: bc0f48f1007b01e4eb8127069808acca, type: 3}
+  DeathPlayer: {fileID: 8300000, guid: ff85cb2ed63ae5e488a23f02ba770128, type: 3}
   _live: 3
   _speed: 1
   _jumpForce: 200
