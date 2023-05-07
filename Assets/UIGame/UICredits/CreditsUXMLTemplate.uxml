@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIGame/UICredits/CreditsUSSFile.uss?fileID=7433441132597879392&amp;guid=fec5791acc0933942ae855ee4b921dc9&amp;type=3#CreditsUSSFile" />
+    <ui:VisualElement name="CreditsCont" class="CreditsCont Autors">
+        <ui:Label tabindex="-1" text="Autores" display-tooltip-when-elided="true" name="TitleAutors" class="TitleAutors" />
+        <ui:Label tabindex="-1" text="Nicolas" display-tooltip-when-elided="true" class="Autors" />
+        <ui:Label tabindex="-1" text="Erick" display-tooltip-when-elided="true" name="Label" class="Autors" />
+        <ui:Label tabindex="-1" text="Juan Pablo" display-tooltip-when-elided="true" name="Label" class="Autors" />
+        <ui:Label tabindex="-1" text="Daniel M. Rodriguez Layton" display-tooltip-when-elided="true" class="Autors" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,31 @@
+VisualElement {
+}
+
+.CreditsCont {
+    background-color: rgba(17, 14, 14, 0.87);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.Autors {
+    color: rgb(253, 247, 247);
+    font-size: 45px;
+    -unity-font-style: bold;
+    margin-bottom: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.TitleAutors {
+    margin-bottom: 30px;
+    font-size: 60px;
+    color: rgb(192, 231, 56);
+}

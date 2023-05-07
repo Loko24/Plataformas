@@ -1,0 +1,35 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIGame/styleUI.uss?fileID=7433441132597879392&amp;guid=05c1ba8e037a12d45b77f139eff34ca8&amp;type=3#styleUI" />
+    <ui:VisualElement name="contenedor" class="contenedor" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); font-size: 20px; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=fc3e4f5fd66f0a445abdf1ef66adf642&amp;type=3#NotInter-Regular&apos;); -unity-font-definition: initial; width: auto;">
+        <ui:VisualElement name="left" class="leftcont" style="flex-grow: 0; background-color: rgba(24, 23, 23, 0.65); align-items: center;">
+            <ui:VisualElement name="logo" class="logo" />
+            <ui:VisualElement name="botones" class="botones" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Button text="JUGAR" display-tooltip-when-elided="true" name="playBtn" class="boton_menu" style="height: 45px;" />
+                <ui:Button text="OPCIONES" display-tooltip-when-elided="true" name="optionsBtn" class="boton_menu" />
+                <ui:Button text="CREDITOS" display-tooltip-when-elided="true" name="creditsBtn" class="boton_menu" />
+                <ui:Button text="SALIR" display-tooltip-when-elided="true" name="exitBtn" class="boton_menu" />
+            </ui:VisualElement>
+            <ui:VisualElement name="footer" class="footer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement name="footer_logo" class="footer_logo" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+                <ui:Label tabindex="-1" text="Act. Video Juegos" display-tooltip-when-elided="true" name="footer_text" class="footer_text" style="font-size: 12px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="right" class="rightcont">
+            <ui:VisualElement name="options" class="options" style="align-items: center; justify-content: center;">
+                <ui:Label tabindex="-1" text="OPCIONES" display-tooltip-when-elided="true" name="optitle" class="optitle" />
+                <ui:Button text="VOLVER" display-tooltip-when-elided="true" name="bkmenu" class="bkmenu" />
+                <ui:VisualElement name="sound_opt" class="menu_opt">
+                    <ui:Toggle label="ON/OFF AUDIO" name="onoff_sound" class="onoff_sound" />
+                    <ui:DropdownField label="CANCIONES" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="songs-list" class="songs-list" />
+                    <ui:Slider picking-mode="Ignore" label="VOL." value="42" high-value="100" name="volume" class="btn_volumen" />
+                </ui:VisualElement>
+                <ui:VisualElement name="credits" class="credits menu_opt">
+                    <ui:Label tabindex="-1" text="Nicolas" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
+                    <ui:Label tabindex="-1" text="Juan Pablo" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
+                    <ui:Label tabindex="-1" text="Erick Fabian" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
+                    <ui:Label tabindex="-1" text="Daniel" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
