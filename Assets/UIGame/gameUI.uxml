@@ -21,7 +21,7 @@
                 <ui:VisualElement name="sound_opt" class="menu_opt">
                     <ui:Toggle label="ON/OFF AUDIO" name="onoff_sound" class="onoff_sound" />
                     <ui:DropdownField label="CANCIONES" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="songs-list" class="songs-list" />
-                    <ui:Slider picking-mode="Ignore" label="VOL." value="42" high-value="100" name="volume" class="btn_volumen" />
+                    <ui:Slider picking-mode="Ignore" label="VOL." value="42" high-value="1" name="volume" class="btn_volumen" />
                 </ui:VisualElement>
                 <ui:VisualElement name="credits" class="credits menu_opt">
                     <ui:Label tabindex="-1" text="Nicolas Parra Redondo" display-tooltip-when-elided="true" class="Autors" />
