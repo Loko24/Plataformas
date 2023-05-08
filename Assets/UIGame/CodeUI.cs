@@ -1,12 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 //using UnityEngine.UI;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
 
 public class CodeUI : CustomAudioGame
 {
@@ -100,7 +97,7 @@ public class CodeUI : CustomAudioGame
                 break;
             case 4:
                 Application.Quit();
-                EditorApplication.ExitPlaymode();
+                //EditorApplication.ExitPlaymode();
                 break;
         }
     }
