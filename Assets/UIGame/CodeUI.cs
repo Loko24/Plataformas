@@ -87,7 +87,7 @@ public class CodeUI : MonoBehaviour
                 _options.Add(_sound_opt);
                 break; 
             case 3:
-                _optitle.text = "CREDITOS";
+                _optitle.text = "AUTORES";
                 _credits.SetEnabled(true);
                 _sound_opt.SetEnabled(false);
                 _sound_opt.RemoveFromHierarchy();

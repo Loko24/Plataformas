@@ -14,8 +14,8 @@ VisualElement {
 }
 
 .Autors {
-    color: rgb(253, 247, 247);
-    font-size: 45px;
+    color: rgb(24, 23, 23);
+    font-size: 50px;
     -unity-font-style: bold;
     margin-bottom: 0;
     padding-left: 5px;
@@ -25,7 +25,33 @@ VisualElement {
 }
 
 .TitleAutors {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     font-size: 60px;
     color: rgb(192, 231, 56);
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.tbBack {
+    background-image: url('project://database/Assets/UI%20Sprites/bg.png?fileID=21300000&guid=4b17466b3f7af4342a606d7ec941a93e&type=3#bg');
+    width: 60%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    -unity-slice-bottom: 0;
+    -unity-slice-top: 0;
+    align-self: center;
 }

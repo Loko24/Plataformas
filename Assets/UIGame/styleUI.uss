@@ -75,7 +75,7 @@ VisualElement {
 }
 
 .footer_logo {
-    background-image: url('project://database/Assets/MagicCliffsArtwork/objects.png?fileID=21300000&guid=c568092d7452f4cf9b5a6e629a61dcd2&type=3#big-floating-rock');
+    background-image: url('project://database/Assets/Downloaded/MagicCliffsArtwork/objects.png?fileID=21300000&guid=c568092d7452f4cf9b5a6e629a61dcd2&type=3#big-floating-rock');
     width: 75%;
     height: auto;
     margin-bottom: 10px;
@@ -169,20 +169,40 @@ VisualElement {
 }
 
 .credits {
-}
-
-.menu_opt_active {
-    translate: 0 0;
-}
-
-.menu_opt_deactive {
-    display: none;
-    visibility: hidden;
-    translate: 120% 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: url('project://database/Assets/UI%20Sprites/bg.png?fileID=21300000&guid=4b17466b3f7af4342a606d7ec941a93e&type=3#bg');
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .integrate {
     -unity-text-align: upper-center;
     color: rgba(253, 251, 251, 0.92);
     font-size: 20px;
+}
+
+.unity-text-element {
+}
+
+.unity-label {
+}
+
+.tbBack {
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-image: url('project://database/Assets/UI%20Sprites/bg.png?fileID=21300000&guid=4b17466b3f7af4342a606d7ec941a93e&type=3#bg');
+}
+
+.Autors {
+    font-size: 50px;
+    -unity-font-style: bold;
 }
