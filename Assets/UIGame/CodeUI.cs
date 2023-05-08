@@ -97,7 +97,7 @@ public class CodeUI : CustomAudioGame
                 break;
             case 4:
                 Application.Quit();
-                EditorApplication.ExitPlaymode();
+                //EditorApplication.ExitPlaymode();
                 break;
         }
     }
