@@ -58684,6 +58684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 794204538}
   - component: {fileID: 794204537}
+  - component: {fileID: 794204539}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -58802,6 +58803,20 @@ Transform:
   m_Father: {fileID: 206091501}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &794204539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794204536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d75f408b12e654d823d425755b560b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourceGm: {fileID: 0}
+  customSongs: []
 --- !u!1001 &860278489
 PrefabInstance:
   m_ObjectHideFlags: 0
