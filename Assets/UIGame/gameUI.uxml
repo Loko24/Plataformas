@@ -24,10 +24,10 @@
                     <ui:Slider picking-mode="Ignore" label="VOL." value="42" high-value="100" name="volume" class="btn_volumen" />
                 </ui:VisualElement>
                 <ui:VisualElement name="credits" class="credits menu_opt">
-                    <ui:Label tabindex="-1" text="Nicolas" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
-                    <ui:Label tabindex="-1" text="Juan Pablo" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
-                    <ui:Label tabindex="-1" text="Erick Fabian" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
-                    <ui:Label tabindex="-1" text="Daniel" display-tooltip-when-elided="true" name="Integrate" class="integrate" />
+                    <ui:Label tabindex="-1" text="Nicolas" display-tooltip-when-elided="true" class="Autors" />
+                    <ui:Label tabindex="-1" text="Erick Pastor Cotrino" display-tooltip-when-elided="true" name="Label" class="Autors" />
+                    <ui:Label tabindex="-1" text="Juan Pullido" display-tooltip-when-elided="true" name="Label" class="Autors" />
+                    <ui:Label tabindex="-1" text="Daniel Rodriguez Layton" display-tooltip-when-elided="true" class="Autors" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
