@@ -3,9 +3,9 @@
     <ui:VisualElement name="CreditsCont" class="CreditsCont Autors">
         <ui:Label text="AUTORES" class="TitleAutors" />
         <ui:VisualElement name="tbBack" class="tbBack" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Nicolas" display-tooltip-when-elided="true" class="Autors" />
+            <ui:Label tabindex="-1" text="Nicolas Parra Redondo" display-tooltip-when-elided="true" class="Autors" />
             <ui:Label tabindex="-1" text="Erick Pastor Cotrino" display-tooltip-when-elided="true" name="Label" class="Autors" />
-            <ui:Label tabindex="-1" text="Juan Pullido" display-tooltip-when-elided="true" name="Label" class="Autors" />
+            <ui:Label tabindex="-1" text="Juan Pulido Anzola" display-tooltip-when-elided="true" name="Label" class="Autors" />
             <ui:Label tabindex="-1" text="Daniel Rodriguez Layton" display-tooltip-when-elided="true" class="Autors" />
         </ui:VisualElement>
     </ui:VisualElement>

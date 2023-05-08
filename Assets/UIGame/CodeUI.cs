@@ -1,14 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 //using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEditor.Progress;
 
-public class CodeUI : MonoBehaviour
+public class CodeUI : CustomAudioGame
 {
     UIDocument _miMenu;
-    //Custom Audio
-    public AudioSource audioSourceGm;
+    public float delayTime = 1f;
     //
     public string sceneName;
     //main_menu
@@ -23,9 +26,7 @@ public class CodeUI : MonoBehaviour
     VisualElement _sound_opt;
     VisualElement _credits;
     Button _bkmenu;
-    Toggle _onoff_sound;
-    DropdownField _songs_list;
-    Slider _audio_volume;
+    public static bool activeAudio;
 
     private void OnEnable()
     {
@@ -45,13 +46,15 @@ public class CodeUI : MonoBehaviour
 
         _optitle = root.Q<Label>("optitle");
         _bkmenu = root.Q<Button>("bkmenu");
-        _onoff_sound = root.Q<Toggle>("onoff_sound");
-        _songs_list = root.Q<DropdownField>("songs-list");
-        _audio_volume = root.Q<Slider>("volume");
+        onoff_sound = root.Q<Toggle>("onoff_sound");
+        songs_list = root.Q<DropdownField>("songs-list");
+        audio_volume = root.Q<Slider>("volume");
         //Custom Audio
         audioSourceGm = GetComponent<AudioSource>();
-        _onoff_sound.value = audioSourceGm.enabled;
-        _audio_volume.value = audioSourceGm.volume;
+        onoff_sound.value = audioSourceGm.enabled;
+        activeAudio = true;
+        audio_volume.value = audioSourceGm.volume;
+        customSongs = Resources.LoadAll<AudioClip>(Application.streamingAssetsPath + "/Sounds/ScenesThemes");
         //
         _credits.SetEnabled(false);
         _sound_opt.SetEnabled(false);
@@ -61,17 +64,18 @@ public class CodeUI : MonoBehaviour
         _credits_btn.RegisterCallback<ClickEvent, int>(OpenOptions, 3);
         _exit_btn.RegisterCallback<ClickEvent, int>(OpenOptions, 4);
 
-        _onoff_sound.RegisterValueChangedCallback(OnOffSound);
-        _songs_list.RegisterValueChangedCallback(MySongsList);
-        _audio_volume.RegisterValueChangedCallback(AudioVolume);
+        onoff_sound.RegisterValueChangedCallback(OnOffSound);
+        songs_list.RegisterValueChangedCallback(MySongsList);
+        audio_volume.RegisterValueChangedCallback(AudioVolume);
         _bkmenu.RegisterCallback<ClickEvent>(CloseOptMenu);
 
     }
 
-    void OpenOptions(ClickEvent evt, int opt)
+    private void OpenOptions(ClickEvent evt, int opt)
     {
 
         _right.RemoveFromClassList("rightcont_active");
+        DelayOptMenu();
         _right.AddToClassList("rightcont_active");
         switch (opt)
         {
@@ -85,7 +89,7 @@ public class CodeUI : MonoBehaviour
                 _credits.RemoveFromHierarchy();
                 _sound_opt.SetEnabled(true);
                 _options.Add(_sound_opt);
-                break; 
+                break;
             case 3:
                 _optitle.text = "AUTORES";
                 _credits.SetEnabled(true);
@@ -93,25 +97,17 @@ public class CodeUI : MonoBehaviour
                 _sound_opt.RemoveFromHierarchy();
                 _options.Add(_credits);
                 Debug.Log("OPTION menu credits" + opt);
-                break; 
+                break;
             case 4:
+                Application.Quit();
+                EditorApplication.ExitPlaymode();
                 break;
         }
     }
-    void OnOffSound(ChangeEvent<bool> evt)
-    {
-        audioSourceGm.enabled = evt.newValue;
-        Debug.Log("HandleCallback invoke value " + evt.newValue);
-    }
 
-    void MySongsList(ChangeEvent<string> evt)
+    IEnumerator DelayOptMenu()
     {
-
-    }
-
-    void AudioVolume(ChangeEvent<float> evt)
-    {
-        audioSourceGm.volume = evt.newValue;
+        yield return new WaitForSeconds(delayTime);
     }
 
     void CloseOptMenu(ClickEvent evt)
